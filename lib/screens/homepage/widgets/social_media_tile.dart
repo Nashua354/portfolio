@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 
 class SocialMediaTile extends StatelessWidget {
@@ -8,20 +10,26 @@ class SocialMediaTile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          tile('linkedin'),
-          tile('twitter'),
-          tile('github'),
-          tile('facebook'),
+          tile("linkedin",
+              "https://www.linkedin.com/in/nitish-sahani-911193119/"),
+          tile("twitter", "https://twitter.com/_nitishsahani_"),
+          tile("github", "https://github.com/Nashua354"),
+          tile("facebook", "https://www.facebook.com/nitish.sahani.31"),
         ],
       ),
     );
   }
 
-  Widget tile(url) {
-    return Container(
-      child: Image.asset(
-        'assets/images/$url.png',
-        height: 30,
+  Widget tile(imageTitle, url) {
+    return InkWell(
+      onTap: () {
+        html.window.open(url, imageTitle);
+      },
+      child: Container(
+        child: Image.asset(
+          'assets/images/$url.png',
+          height: 30,
+        ),
       ),
     );
   }

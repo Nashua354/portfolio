@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   responsive_builder:
   get_it:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:

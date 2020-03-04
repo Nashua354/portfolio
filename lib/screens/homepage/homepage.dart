@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/blocs/primarySection/primary_section_bloc.dart';
+import 'package:portfolio/blocs/primarySection/primary_section_state.dart';
+import 'package:portfolio/locator.dart';
 import 'package:portfolio/screens/homepage/sections/bold_section.dart';
+import 'package:portfolio/screens/homepage/sections/first_section.dart';
+import 'package:portfolio/screens/homepage/sections/second_section.dart';
 import 'package:portfolio/screens/homepage/widgets/side_navbar.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,9 +20,19 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SideNavBar(),
-        // PrimarySection(),
-        // SecondarySection(),
-        BoldSection(),
+        BlocBuilder(
+          bloc: locator<PrimarySectionBloc>(),
+          builder: (context, state) {
+            if (state is BoldSectionState)
+              return BoldSection();
+            else if (state is TwoSectionState)
+              return Row(
+                children: <Widget>[PrimarySection(), SecondarySection()],
+              );
+            else
+              return Container();
+          },
+        )
       ],
     );
   }
