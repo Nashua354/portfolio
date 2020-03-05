@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/blocs/primarySection/primary_section_bloc.dart';
-import 'package:portfolio/blocs/primarySection/primary_section_state.dart';
+import 'package:portfolio/blocs/homePage/home_page_bloc.dart';
+import 'package:portfolio/blocs/homePage/home_page_states.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/screens/homepage/sections/bold_section.dart';
 import 'package:portfolio/screens/homepage/sections/first_section.dart';
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         SideNavBar(),
         BlocBuilder(
-          bloc: locator<PrimarySectionBloc>(),
+          bloc: locator<HomePageBloc>(),
           builder: (context, state) {
             if (state is BoldSectionState)
               return BoldSection();

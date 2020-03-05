@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/blocs/primarySection/primary_section_bloc.dart';
-import 'package:portfolio/blocs/primarySection/primary_section_event.dart';
+import 'package:portfolio/blocs/homePage/home_page_bloc.dart';
+import 'package:portfolio/blocs/homePage/home_page_events.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/widgets/custom_divider.dart';
 
 class NavItem extends StatelessWidget {
   final Widget navItem;
   NavItem({this.navItem});
-  PrimarySectionBloc test = locator<PrimarySectionBloc>();
+  HomePageBloc test = locator<HomePageBloc>();
 
   @override
   Widget build(BuildContext context) {

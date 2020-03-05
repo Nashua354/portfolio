@@ -8,7 +8,7 @@ class PrimarySection extends StatelessWidget {
     return PrimaryVerticalLayout(
       backgroundColor: CommonColors.primarySection,
       widthRatio: 4,
-      child: Text('testing'),
+      child: Text('testing\n testing'),
     );
   }
 }

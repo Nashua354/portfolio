@@ -5,6 +5,25 @@
   <title>portfolio</title>
 </head>
 <body>
-  <script src="main.dart.js" type="application/javascript"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBRTUfYrQf0SAylBwQLrRxr9DH4BoB1Uqc",
+      authDomain: "portfolio-604c6.firebaseapp.com",
+      databaseURL: "https://portfolio-604c6.firebaseio.com",
+      projectId: "portfolio-604c6",
+      storageBucket: "portfolio-604c6.appspot.com",
+      messagingSenderId: "273928515217",
+      appId: "1:273928515217:web:1442ac040dca4002fe9930",
+      measurementId: "G-TZ1FX15FJM"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+    <script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 </html>

@@ -27,7 +27,7 @@ class SocialMediaTile extends StatelessWidget {
       },
       child: Container(
         child: Image.asset(
-          'assets/images/$url.png',
+          'assets/images/$imageTitle.png',
           height: 30,
         ),
       ),

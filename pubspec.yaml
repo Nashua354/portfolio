@@ -26,6 +26,7 @@ dependencies:
   responsive_builder:
   get_it:
   flutter_bloc:
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
