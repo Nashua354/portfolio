@@ -4,12 +4,12 @@ import 'package:portfolio/blocs/homePage/home_page_states.dart';
 
 class HomePageBloc extends Bloc<HomePageEvents, HomePageStates> {
   @override
-  HomePageStates get initialState => BoldSectionState();
+  HomePageStates get initialState => SingleSectionState();
 
   @override
   Stream<HomePageStates> mapEventToState(HomePageEvents event) async* {
     try {
-      if (event is BoldSectionEvent) yield BoldSectionState();
+      if (event is SingleSectionEvent) yield SingleSectionState();
       if (event is TwoSectionEvent) yield TwoSectionState();
     } catch (e) {
       throw StateError(e);

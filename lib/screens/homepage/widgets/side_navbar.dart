@@ -23,18 +23,19 @@ class SideNavBar extends StatelessWidget {
       backgroundColor: CommonColors.sideBar,
       widthRatio: 5,
       child: BlocBuilder(
-          bloc: locator<SideNavBloc>(),
-          builder: (context, state) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: navItems.length,
-              itemBuilder: (context, index) {
-                return NavItem(
-                  navItem: navItems[index],
-                );
-              },
-            );
-          }),
+        bloc: locator<SideNavBloc>(),
+        builder: (context, state) {
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: navItems.length,
+            itemBuilder: (context, index) {
+              return NavItem(
+                navItem: navItems[index],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

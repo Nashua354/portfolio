@@ -7,7 +7,7 @@ import 'package:portfolio/widgets/custom_divider.dart';
 class NavItem extends StatelessWidget {
   final Widget navItem;
   NavItem({this.navItem});
-  HomePageBloc test = locator<HomePageBloc>();
+  HomePageBloc homePageBloc = locator<HomePageBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class NavItem extends StatelessWidget {
       onTap: () {
         if (navItem is Text) {
           print("TEXT");
-          test.add(TwoSectionEvent());
+          homePageBloc.add(TwoSectionEvent());
         } else {
           print("OTHERS");
-          test.add(BoldSectionEvent());
+          homePageBloc.add(SingleSectionEvent());
         }
       },
       child: Column(

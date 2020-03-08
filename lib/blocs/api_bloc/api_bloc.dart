@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/blocs/api_bloc/api_events.dart';
 import 'package:portfolio/blocs/api_bloc/api_states.dart';
@@ -10,12 +9,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   @override
   Stream<ApiStates> mapEventToState(ApiEvents event) async* {
     try {
-      if (event is GetPoemsEvent) {
-        Firestore.instance.collection('poems').getDocuments().then((data) {
-          print(data.documents[0].data["title"]);
-          print(data.documents[0].documentID);
-        });
-      }
+      if (event is GetPoemsEvent) {}
     } catch (e) {
       print(e);
     }
