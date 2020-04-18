@@ -15,22 +15,12 @@ class PoemSectionWidget extends StatelessWidget {
               child: Text(poemData.title, style: TextStyle(fontSize: 20, fontFamily: 'work_sans')),
             ),
             Container(
-              // width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.only(bottom: 30, right: 25),
               child: SelectableText(
                 poemData.script,
                 style: TextStyle(fontSize: 15, fontFamily: 'work_sans'),
               ),
             ),
-            // Image.network(
-            //   poemData.imageUrl,
-            //   height: 300,
-            //   width: 300,
-            // ),
-            // Text(
-            //   poemData.script,
-            //   style: GoogleFonts.workSans(fontSize: 20),
-            // ),
           ],
         ),
       ),
