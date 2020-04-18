@@ -10,7 +10,11 @@ class PrimarySectionBloc
   @override
   Stream<PrimarySectionStates> mapEventToState(
       PrimarySectionEvents event) async* {
-    try {} catch (e) {
+    try {
+      if (event is PoetryPrimarySectionEvent) {
+        yield PoetryPrimarySectionState(poemsParser: event.poemsParser);
+      }
+    } catch (e) {
       throw StateError(e);
     }
   }

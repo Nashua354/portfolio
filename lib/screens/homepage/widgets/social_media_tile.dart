@@ -1,6 +1,7 @@
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/extensions/hover_extensions.dart';
 
 class SocialMediaTile extends StatelessWidget {
   @override
@@ -31,6 +32,6 @@ class SocialMediaTile extends StatelessWidget {
           height: 30,
         ),
       ),
-    );
+    ).showCursorOnHover.moveDownOnHover;
   }
 }

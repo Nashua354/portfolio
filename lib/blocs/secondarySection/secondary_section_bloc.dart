@@ -5,8 +5,7 @@ import 'package:portfolio/blocs/secondarySection/secondary_section_states.dart';
 class SecondarySectionBloc
     extends Bloc<SecondarySectionEvents, SecondarySectionStates> {
   @override
-  SecondarySectionStates get initialState =>
-      RenderSecondarySectionState(content: []);
+  SecondarySectionStates get initialState => InitialSecondarySectionState();
 
   @override
   Stream<SecondarySectionStates> mapEventToState(

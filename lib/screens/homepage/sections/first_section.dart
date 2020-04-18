@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/config/colors.dart';
 import 'package:portfolio/controllers/primary_section_controller.dart';
+import 'package:portfolio/extensions/hover_extensions.dart';
 import 'package:portfolio/locator.dart';
+import 'package:portfolio/model/saved_data.dart';
+import 'package:portfolio/screens/homepage/widgets/poem_tile.dart';
 import 'package:portfolio/widgets/primary_vertical_layout.dart';
 
 class PrimarySection extends StatelessWidget {
-  PrimarySectionController primarySectionController =
-      locator<PrimarySectionController>();
+  PrimarySectionController primarySectionController = locator<PrimarySectionController>();
+  SavedData savedData = locator<SavedData>();
   @override
   Widget build(BuildContext context) {
     return PrimaryVerticalLayout(
       backgroundColor: CommonColors.primarySection,
       widthRatio: 4,
-      child: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                primarySectionController
-                    .renderSecondarySection([Text("index : $index")]);
-              },
-              child: Container(
-                child: Card(
-                  child: Text('index: $index'),
-                ),
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-              ),
+      rightPadding: 0,
+      child: BlocBuilder(
+          bloc: primarySectionController.primarySectionBloc,
+          builder: (context, state) {
+            // if (state is PoetryPrimarySectionState) {
+            return Scrollbar(
+              child: ListView.builder(
+                  itemCount: savedData.poemsParser.poems.length,
+                  itemBuilder: (context, index) {
+                    return PoetryTile(
+                      key: UniqueKey(),
+                      index: index,
+                    ).showCursorOnHover.moveRightOnHover;
+                  }),
             );
+            // } else
+            //   return Text("OTHERS");
           }),
     );
   }

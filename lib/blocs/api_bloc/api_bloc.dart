@@ -11,7 +11,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
     try {
       if (event is GetPoemsEvent) {}
     } catch (e) {
-      print(e);
+      // print(e);
     }
   }
 }

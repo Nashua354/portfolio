@@ -1,15 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:portfolio/utils/next_line.dart';
 
 class PoemsParser {
   List<Snap> poems;
-  PoemsParser({
-    this.poems,
-  });
+  PoemsParser({this.poems});
 
   factory PoemsParser.fromJson(List<DocumentSnapshot> data) => PoemsParser(
-        poems: data != null
-            ? List<Snap>.from(data.map((x) => Snap.fromJson(x)))
-            : null,
+        poems: data != null ? List<Snap>.from(data.map((x) => Snap.fromJson(x))) : null,
       );
 }
 
@@ -32,13 +29,15 @@ class Poem {
   String script;
   String imageUrl;
   Timestamp date;
-  Poem({this.script, this.date, this.title, this.imageUrl});
+  bool isActive;
+  Poem({this.script, this.date, this.title, this.imageUrl, this.isActive});
   factory Poem.fromJson(Map<String, dynamic> data) {
     return Poem(
       title: data["title"] != null ? data["title"] : "",
-      script: data["script"] != null ? data["script"] : "",
+      script: data["script"] != null ? addNextLines(data["script"]) : "",
       imageUrl: data["imageUrl"] != null ? data["imageUrl"] : "",
       date: data["time"] != null ? data["time"] : Timestamp.now(),
+      isActive: false,
     );
   }
 }
