@@ -16,7 +16,7 @@ List sideNav = [
   },
   {
     "type": "text",
-    "label": "BONUS",
+    "label": "ARTICLES",
     "isActive": false,
   },
   {

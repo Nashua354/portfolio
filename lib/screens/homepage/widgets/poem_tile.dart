@@ -5,9 +5,9 @@ import 'package:portfolio/blocs/highlightBloc/highlight_bloc.dart';
 import 'package:portfolio/blocs/highlightBloc/highlight_events.dart';
 import 'package:portfolio/blocs/highlightBloc/highlight_states.dart';
 import 'package:portfolio/controllers/primary_section_controller.dart';
+import 'package:portfolio/controllers/secondary_section_controller.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/model/saved_data.dart';
-import 'package:portfolio/screens/homepage/widgets/poem_section.dart';
 
 class PoetryTile extends StatefulWidget {
   final Function onTap;
@@ -40,13 +40,7 @@ class _PoetryTileState extends State<PoetryTile> {
               .add(EnableHighLightEvent(savedData.poemsParser.poems[widget.index].poem.isActive));
           return InkWell(
             onTap: () {
-              savedData.poemsParser.poems.forEach((p) {
-                p.poem.isActive = false;
-              });
-              savedData.poemsParser.poems[widget.index].poem.isActive = true;
-
-              primarySectionController.renderSecondarySection(
-                  PoemSectionWidget(poemData: savedData.poemsParser.poems[widget.index].poem));
+              SecondarySectionController().poemsReset(widget.index);
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -57,7 +51,7 @@ class _PoetryTileState extends State<PoetryTile> {
                 overflow: Overflow.visible,
                 children: <Widget>[
                   Container(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     child: FadeInImage(
                         fit: BoxFit.fitHeight,
                         width: 350,

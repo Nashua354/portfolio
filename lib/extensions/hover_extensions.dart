@@ -1,12 +1,13 @@
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/transitions/color_transition.dart';
 import 'package:portfolio/transitions/hover_transitions.dart';
+import 'package:portfolio/transitions/shadow_transitions.dart';
 
 extension HoverExtensions on Widget {
   // Get a regerence to the body of the view
-  static final appContainer =
-      html.window.document.getElementById('app-container');
+  static final appContainer = html.window.document.getElementById('app-container');
 
   Widget get showCursorOnHover {
     return MouseRegion(
@@ -19,6 +20,18 @@ extension HoverExtensions on Widget {
       onExit: (event) {
         appContainer.style.cursor = 'default';
       },
+    );
+  }
+
+  Widget get removeColorOnHover {
+    return ColorTransition(
+      child: this,
+    );
+  }
+
+  Widget get shadowOnHover {
+    return ShadowTransition(
+      child: this,
     );
   }
 

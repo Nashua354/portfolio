@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/config/colors.dart';
 import 'package:portfolio/controllers/primary_section_controller.dart';
+import 'package:portfolio/controllers/secondary_section_controller.dart';
 import 'package:portfolio/extensions/hover_extensions.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/model/saved_data.dart';
@@ -21,6 +22,7 @@ class PrimarySection extends StatelessWidget {
           bloc: primarySectionController.primarySectionBloc,
           builder: (context, state) {
             // if (state is PoetryPrimarySectionState) {
+            SecondarySectionController().poemsReset(0);
             return Scrollbar(
               child: ListView.builder(
                   itemCount: savedData.poemsParser.poems.length,

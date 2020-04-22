@@ -23,7 +23,6 @@ class _BoldSectionState extends State<BoldSection> {
           return PrimaryVerticalLayout(
             backgroundColor: CommonColors.primarySection,
             widthRatio: state is SideBarEnabledState ? 1.25 : 1,
-            rightPadding: 0,
             child: HomeSection(),
           );
         });

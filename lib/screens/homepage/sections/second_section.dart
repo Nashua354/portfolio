@@ -24,6 +24,8 @@ class _SecondarySectionState extends State<SecondarySection> {
             backgroundColor: CommonColors.secondarySection,
             widthRatio: sideNavState is SideBarEnabledState ? 1.82 : 1.335,
             rightPadding: 0,
+            leftPadding: 0,
+            topPadding: 0,
             child: BlocBuilder(
               bloc: locator<SecondarySectionBloc>(),
               builder: (context, state) {

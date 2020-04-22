@@ -11,8 +11,7 @@ class SocialMediaTile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          tile("linkedin",
-              "https://www.linkedin.com/in/nitish-sahani-911193119/"),
+          tile("linkedin", "https://www.linkedin.com/in/nitish-sahani-911193119/"),
           tile("twitter", "https://twitter.com/_nitishsahani_"),
           tile("github", "https://github.com/Nashua354"),
           tile("facebook", "https://www.facebook.com/nitish.sahani.31"),
@@ -32,6 +31,6 @@ class SocialMediaTile extends StatelessWidget {
           height: 30,
         ),
       ),
-    ).showCursorOnHover.moveDownOnHover;
+    ).showCursorOnHover.shadowOnHover;
   }
 }

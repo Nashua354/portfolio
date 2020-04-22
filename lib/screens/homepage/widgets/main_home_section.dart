@@ -25,7 +25,7 @@ class _HomeSectionState extends State<HomeSection> {
                 )
               ],
             ),
-          ).showCursorOnHover,
+          ).showCursorOnHover.shadowOnHover,
         ),
         Center(
           child: Opacity(

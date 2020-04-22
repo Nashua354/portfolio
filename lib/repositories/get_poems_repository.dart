@@ -8,6 +8,8 @@ class GetPoemsRepository {
   getPoems() {
     Firestore.instance.collection('poems').getDocuments().then((data) {
       savedData.poemsParser = PoemsParser.fromJson(data.documents);
+      savedData.poemsParser.poems
+          .sort((a, b) => -a.poem.date.toDate().compareTo(b.poem.date.toDate()));
     });
   }
 }
