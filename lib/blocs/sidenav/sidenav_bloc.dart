@@ -4,7 +4,7 @@ import 'package:portfolio/blocs/sidenav/sidenav_states.dart';
 
 class SideNavBloc extends Bloc<SideNavEvents, SideNavStates> {
   @override
-  SideNavStates get initialState => SideBarEnabledState();
+  SideNavStates get initialState => SideBarDisabledState();
 
   @override
   Stream<SideNavStates> mapEventToState(SideNavEvents event) async* {

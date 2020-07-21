@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/locator.dart';
-import 'package:portfolio/widgets/layout_template.dart';
+import 'package:portfolio/routing/routing.dart';
+import 'package:portfolio/screens/home_screen/home_screen.dart';
 
 void main() {
   setupLocator();
+  RouteHandler().defineRoutes();
   runApp(MyApp());
 }
 
@@ -17,7 +19,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LayoutTemplate(),
+      onGenerateRoute: RouteHandler.router.generator,
+      home: HomeScreen(),
     );
   }
 }

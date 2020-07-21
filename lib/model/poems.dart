@@ -30,7 +30,8 @@ class Poem {
   String imageUrl;
   Timestamp date;
   bool isActive;
-  Poem({this.script, this.date, this.title, this.imageUrl, this.isActive});
+  List<String> tags;
+  Poem({this.script, this.date, this.title, this.imageUrl, this.isActive, this.tags});
   factory Poem.fromJson(Map<String, dynamic> data) {
     return Poem(
       title: data["title"] != null ? data["title"] : "",
@@ -38,6 +39,7 @@ class Poem {
       imageUrl: data["imageUrl"] != null ? data["imageUrl"] : "",
       date: data["time"] != null ? data["time"] : Timestamp.now(),
       isActive: false,
+      tags: data["tags"] != null ? data["tags"].cast<String>() : [],
     );
   }
 }
