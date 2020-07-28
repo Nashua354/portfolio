@@ -10,6 +10,7 @@ import 'package:portfolio/blocs/sidenav/sidenav_states.dart';
 import 'package:portfolio/config/colors.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/model/saved_data.dart';
+import 'package:portfolio/repositories/update_views_repository.dart';
 import 'package:portfolio/screens/main_scaffold.dart';
 import 'package:portfolio/screens/poems_screen/filters.dart';
 import 'package:portfolio/screens/poems_screen/poem_view_tile.dart';
@@ -39,7 +40,7 @@ class PoemView extends CustomScaffold {
               return Row(
                 children: <Widget>[
                   PrimaryVerticalLayout(
-                    backgroundColor: CommonColors.primarySection,
+                    backgroundColor: CommonColors.primaryColor,
                     widthRatio: 4,
                     rightPadding: 0,
                     child: Scrollbar(
@@ -66,8 +67,10 @@ class PoemView extends CustomScaffold {
                   BlocBuilder(
                       bloc: sideNavBloc,
                       builder: (context, sideNavState) {
+                        UpdateViewsRepository().updatePoemViews(
+                            filteredPoems.poems[filteredPoems.index].documentReference);
                         return PrimaryVerticalLayout(
-                          backgroundColor: CommonColors.secondarySection,
+                          backgroundColor: CommonColors.secondaryColor,
                           widthRatio: sideNavState is SideBarEnabledState ? 1.82 : 1.421,
                           rightPadding: 0,
                           leftPadding: 0,
@@ -91,13 +94,36 @@ class PoemView extends CustomScaffold {
                                       children: <Widget>[
                                         Container(
                                           padding: EdgeInsets.symmetric(vertical: 30),
-                                          child: Text(
-                                              filteredPoems.poems[filteredPoems.index].poem.title,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black,
-                                                  fontSize: 25,
-                                                  fontFamily: 'work_sans')),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  filteredPoems
+                                                      .poems[filteredPoems.index].poem.title,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.black,
+                                                      fontSize: 25,
+                                                      fontFamily: 'work_sans')),
+                                              Container(
+                                                margin: EdgeInsets.only(left: 30),
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Icon(
+                                                  Icons.remove_red_eye,
+                                                  color: Colors.black.withOpacity(0.7),
+                                                  size: 20,
+                                                ),
+                                              ),
+                                              Text(
+                                                  filteredPoems
+                                                      .poems[filteredPoems.index].poem.views
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                      color: Colors.black.withOpacity(0.7),
+                                                      fontSize: 15,
+                                                      fontFamily: 'work_sans')),
+                                            ],
+                                          ),
                                         ),
                                         Container(
                                           padding: EdgeInsets.only(bottom: 30, right: 25, left: 25),

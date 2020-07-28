@@ -25,7 +25,7 @@ class SideNavBar extends StatelessWidget {
           builder: (context, state) {
             if (state is SideBarEnabledState)
               return PrimaryVerticalLayout(
-                backgroundColor: CommonColors.sideBar,
+                backgroundColor: CommonColors.secondaryColor,
                 widthRatio: 5,
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -40,7 +40,7 @@ class SideNavBar extends StatelessWidget {
               );
             else
               return PrimaryVerticalLayout(
-                backgroundColor: CommonColors.sideBar,
+                backgroundColor: CommonColors.secondaryColor,
                 rightPadding: 8,
                 leftPadding: 8,
                 widthRatio: 22,
@@ -86,7 +86,7 @@ class SideNavBar extends StatelessWidget {
               width: 40,
               padding: EdgeInsets.only(),
               decoration: BoxDecoration(
-                  color: CommonColors.sideBar,
+                  color: CommonColors.secondaryColor,
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
               child: Icon(

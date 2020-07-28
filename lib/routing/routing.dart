@@ -4,7 +4,8 @@ import 'package:portfolio/screens/articles/articles.dart';
 import 'package:portfolio/screens/home_screen/home_screen.dart';
 import 'package:portfolio/screens/poems_screen/poem_view.dart';
 import 'package:portfolio/screens/poems_screen/poems_screen.dart';
-import 'package:portfolio/screens/projects/projects.dart';
+import 'package:portfolio/screens/projects/project_view.dart';
+import 'package:portfolio/screens/projects/projects_screen.dart';
 import 'package:portfolio/screens/resume/resume.dart';
 
 class RouteHandler {
@@ -31,6 +32,10 @@ class RouteHandler {
   var poemViewHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return PoemView(title: params["title"][0]);
   });
+  var projectViewHandler =
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return ProjectView(title: params["title"][0]);
+  });
 
   void defineRoutes() {
     router.define(RouteNames.homeRoute,
@@ -45,6 +50,8 @@ class RouteHandler {
         handler: resumeScreenHandler, transitionType: TransitionType.fadeIn);
     router.define(RouteNames.poemViewRoute,
         handler: poemViewHandler, transitionType: TransitionType.fadeIn);
+    router.define(RouteNames.projectViewRoute,
+        handler: projectViewHandler, transitionType: TransitionType.fadeIn);
   }
 }
 
@@ -55,4 +62,5 @@ class RouteNames {
   static const String resumeRoute = "/resume";
   static const String projectsRoute = "/projects";
   static const String poemViewRoute = "/poems/:title";
+  static const String projectViewRoute = "/projects/:title";
 }

@@ -25,6 +25,7 @@ class _NavItemState extends State<NavItem> {
   void initState() {
     if (widget.item["type"] == "text") {
       navItem = Tooltip(
+        waitDuration: Duration(seconds: 0),
         message: widget.item['label'],
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20),
@@ -102,7 +103,8 @@ class _NavItemState extends State<NavItem> {
     return BlocBuilder(
         bloc: highLightBloc,
         builder: (context, state) {
-          highLightBloc.add(EnableHighLightEvent(widget.item["isActive"]));
+          if (widget.item["type"] != "logo")
+            highLightBloc.add(EnableHighLightEvent(widget.item["isActive"]));
           return InkWell(
             onHover: (value) {
               // print("color changed");

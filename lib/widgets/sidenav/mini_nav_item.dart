@@ -26,6 +26,7 @@ class _MiniNavItemState extends State<MiniNavItem> {
       navItem = Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Tooltip(
+          waitDuration: Duration(seconds: 0),
           message: widget.item["label"],
           child: Image.asset(
             "assets/images/mini${widget.item["label"]}.png",
@@ -108,7 +109,8 @@ class _MiniNavItemState extends State<MiniNavItem> {
     return BlocBuilder(
         bloc: highLightBloc,
         builder: (context, state) {
-          highLightBloc.add(EnableHighLightEvent(widget.item["isActive"]));
+          if (widget.item["type"] != "logo")
+            highLightBloc.add(EnableHighLightEvent(widget.item["isActive"]));
           return InkWell(
             onHover: (value) {
               // print("color changed");

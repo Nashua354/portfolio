@@ -12,50 +12,50 @@ class PoemScreenTile extends StatelessWidget {
   FilteredPoems filteredPoems = locator<FilteredPoems>();
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        // SecondarySectionController().poemsReset(index);
-        if (filteredPoems.index != null)
-          filteredPoems.poems[filteredPoems.index].poem.isActive = false;
-        filteredPoems.index = index;
-        filteredPoems.poems[index].poem.isActive = true;
-        RouteHandler.router.navigateTo(context, "poems/${filteredPoems.poems[index].poem.title}");
-      },
-      child: Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(bottom: 10, right: 25),
-          // width: MediaQuery.of(context).size.width,
-          color: Colors.transparent,
-          child: Card(
-            child: ListTile(
-              title: Text(
-                "${filteredPoems.poems[index].poem.title} ",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontFamily: 'work_sans',
-                ),
-              ),
-              subtitle: Column(
-                children: <Widget>[
-                  Image.network(
-                    filteredPoems.poems[index].poem.imageUrl,
-                    fit: BoxFit.cover,
-                    height: 190,
-                  ),
-                  Text(
-                    formattedDate(filteredPoems.poems[index].poem.date),
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontFamily: 'work_sans',
-                    ),
-                  )
-                ],
+    return Container(
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: 10, right: 25),
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          // SecondarySectionController().poemsReset(index);
+          if (filteredPoems.index != null)
+            filteredPoems.poems[filteredPoems.index].poem.isActive = false;
+          filteredPoems.index = index;
+          filteredPoems.poems[index].poem.isActive = true;
+          RouteHandler.router.navigateTo(context, "poems/${filteredPoems.poems[index].poem.title}");
+        },
+        child: Card(
+          child: ListTile(
+            title: Text(
+              "${filteredPoems.poems[index].poem.title} ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+                fontFamily: 'work_sans',
               ),
             ),
-          ).showCursorOnHover.moveUpOnHover),
+            subtitle: Column(
+              children: <Widget>[
+                Image.network(
+                  filteredPoems.poems[index].poem.imageUrl,
+                  fit: BoxFit.cover,
+                  height: 190,
+                ),
+                Text(
+                  formattedDate(filteredPoems.poems[index].poem.date),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontFamily: 'work_sans',
+                  ),
+                )
+              ],
+            ),
+          ),
+        ).showCursorOnHover.moveUpOnHover,
+      ),
     );
   }
 

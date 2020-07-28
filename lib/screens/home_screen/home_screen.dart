@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:particles_flutter/particles_flutter.dart';
+import 'package:portfolio/blocs/isdark_bloc/isdark_bloc.dart';
+import 'package:portfolio/config/colors.dart';
 import 'package:portfolio/extensions/hover_extensions.dart';
+import 'package:portfolio/locator.dart';
 import 'package:portfolio/screens/main_scaffold.dart';
 import 'package:portfolio/widgets/sidenav/side_nav_data.dart';
 
@@ -18,11 +21,12 @@ class HomeScreen extends CustomScaffold {
           speedOfParticles: 1,
           maxParticleSize: 10,
           isRandomColor: false,
+          particleColor: Colors.black.withOpacity(0.2),
         ),
         Align(
           alignment: Alignment.topRight,
           child: Opacity(
-            opacity: 0.1,
+            opacity: 1,
             child: Image.asset(
               'assets/images/geek.png',
               height: 500,
@@ -87,7 +91,7 @@ class HomeScreen extends CustomScaffold {
                       width: 40,
                     ),
                   ),
-                  heading(" Win the Game."),
+                  heading(" Win the game."),
                 ],
               ),
               heading("\nCurrent Weapons", size: 20),
@@ -122,22 +126,28 @@ class HomeScreen extends CustomScaffold {
         Positioned(
           right: 20,
           top: 20,
-          child: Tooltip(
-            message: 'Built with Flutter',
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration:
-                  BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Built with ',
-                    style: TextStyle(fontSize: 15),
+          child: InkWell(
+            onTap: () {
+              locator<IsdarkBloc>().add(ToggleDarkModeEvent());
+            },
+            child: Card(
+              child: Tooltip(
+                message: 'Built with Flutter',
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        'Built with ',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      FlutterLogo(
+                        size: 20,
+                      )
+                    ],
                   ),
-                  FlutterLogo(
-                    size: 20,
-                  )
-                ],
+                ),
               ),
             ).showCursorOnHover.shadowOnHover,
           ),
@@ -150,7 +160,7 @@ class HomeScreen extends CustomScaffold {
     return SelectableText(
       text,
       enableInteractiveSelection: true,
-      style: TextStyle(fontSize: size, fontFamily: "work_sans"),
+      style: TextStyle(color: CommonColors.textColor, fontSize: size, fontFamily: "work_sans"),
     );
   }
 

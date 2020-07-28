@@ -18,7 +18,7 @@ class CustomScaffold extends StatelessWidget {
             bloc: sideNavBloc,
             builder: (context, state) {
               return PrimaryVerticalLayout(
-                backgroundColor: CommonColors.primarySection,
+                backgroundColor: CommonColors.primaryColor,
                 widthRatio: state is SideBarEnabledState ? 1.25 : 1.048,
                 rightPadding: 0,
                 leftPadding: 0,
